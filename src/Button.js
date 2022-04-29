@@ -1,9 +1,6 @@
-import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import React, { Fragment } from 'react';
 import styled from 'styled-components';
-import { darken, rgba } from 'polished';
-import { color, typography } from './shared/styles';
-import { easing } from './shared/animation';
 
 const Text = styled.span`
   display: inline-block;
@@ -19,21 +16,26 @@ const Loading = styled.span`
 `;
 
 const APPEARANCES = {
-  PRIMARY: 'primary',
-  PRIMARY_OUTLINE: 'primaryOutline',
-  SECONDARY: 'secondary',
-  SECONDARY_OUTLINE: 'secondaryOutline',
-  TERTIARY: 'tertiary',
-  OUTLINE: 'outline',
+  PRIMARY: "primary",
+  PRIMARY_OUTLINE: "primaryOutline",
+  SECONDARY: "secondary",
+  SECONDARY_OUTLINE: "secondaryOutline",
+  TERTIARY: "tertiary",
+  OUTLINE: "outline",
 };
 
 const SIZES = {
-  SMALL: 'small',
-  MEDIUM: 'medium',
+  SMALL: "small",
+  MEDIUM: "medium",
 };
 
 const StyledButton = styled.button`
-  border: 0;
+  border: 10px solid red;
+  font-size: 20px;
+`;
+
+/*
+const StyledButton = styled.button`
   border-radius: 3em;
   cursor: pointer;
   display: inline-block;
@@ -95,7 +97,6 @@ const StyledButton = styled.button`
     margin-top: ${props => (props.size === SIZES.SMALL ? '-1' : '-2')}px;
     margin-bottom: ${props => (props.size === SIZES.SMALL ? '-1' : '-2')}px;
 
-    /* Necessary for js mouse events to not glitch out when hovering on svgs */
     pointer-events: none;
   }
 
@@ -314,7 +315,7 @@ const applyStyle = ButtonWrapper => {
       <ButtonWrapper {...rest} />
     ))
   );
-};
+};*/
 
 export function Button({
   isDisabled,
@@ -328,11 +329,14 @@ export function Button({
   const buttonInner = (
     <Fragment>
       <Text>{children}</Text>
-      {isLoading && <Loading>{loadingText || 'Loading...'}</Loading>}
+      {isLoading && <Loading>{loadingText || "Loading..."}</Loading>}
     </Fragment>
   );
 
-  const StyledButtonWrapper = React.useMemo(() => applyStyle(ButtonWrapper), [ButtonWrapper]);
+  const StyledButtonWrapper = React.useMemo(
+    () => applyStyle(ButtonWrapper),
+    [ButtonWrapper]
+  );
 
   let SelectedButton = StyledButton;
   if (ButtonWrapper) {
