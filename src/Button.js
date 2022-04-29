@@ -28,24 +28,24 @@ const SIZES = {
   SMALL: "small",
   MEDIUM: "medium",
 };
-
+/*
 const StyledButton = styled.button`
   border: 10px solid red;
   font-size: 20px;
-`;
+`;*/
 
-/*
 const StyledButton = styled.button`
   border-radius: 3em;
   cursor: pointer;
   display: inline-block;
   overflow: hidden;
-  padding: ${props => (props.size === SIZES.SMALL ? '8px 16px' : '13px 20px')};
+  padding: ${(props) =>
+    props.size === SIZES.SMALL ? "8px 16px" : "13px 20px"};
   position: relative;
   text-align: center;
   text-decoration: none;
   transition: all 150ms ease-out;
-  transform: translate3d(0,0,0);
+  transform: translate3d(0, 0, 0);
   vertical-align: top;
   white-space: nowrap;
   user-select: none;
@@ -53,12 +53,12 @@ const StyledButton = styled.button`
   margin: 0;
   background: transparent;
 
-
-  font-size: ${props => (props.size === SIZES.SMALL ? typography.size.s1 : typography.size.s2)}px;
+  font-size: ${(props) =>
+    props.size === SIZES.SMALL ? typography.size.s1 : typography.size.s2}px;
   font-weight: ${typography.weight.extrabold};
   line-height: 1;
 
-  ${props =>
+  ${(props) =>
     !props.isLoading &&
     `
       &:hover {
@@ -80,7 +80,7 @@ const StyledButton = styled.button`
     `}
 
   ${Text} {
-    transform: scale3d(1,1,1) translate3d(0,0,0);
+    transform: scale3d(1, 1, 1) translate3d(0, 0, 0);
     transition: transform 700ms ${easing.rubber};
     opacity: 1;
   }
@@ -90,17 +90,17 @@ const StyledButton = styled.button`
   }
 
   svg {
-    height: ${props => (props.size === SIZES.SMALL ? '14' : '16')}px;
-    width: ${props => (props.size === SIZES.SMALL ? '14' : '16')}px;
+    height: ${(props) => (props.size === SIZES.SMALL ? "14" : "16")}px;
+    width: ${(props) => (props.size === SIZES.SMALL ? "14" : "16")}px;
     vertical-align: top;
-    margin-right: ${props => (props.size === SIZES.SMALL ? '4' : '6')}px;
-    margin-top: ${props => (props.size === SIZES.SMALL ? '-1' : '-2')}px;
-    margin-bottom: ${props => (props.size === SIZES.SMALL ? '-1' : '-2')}px;
+    margin-right: ${(props) => (props.size === SIZES.SMALL ? "4" : "6")}px;
+    margin-top: ${(props) => (props.size === SIZES.SMALL ? "-1" : "-2")}px;
+    margin-bottom: ${(props) => (props.size === SIZES.SMALL ? "-1" : "-2")}px;
 
     pointer-events: none;
   }
 
-  ${props =>
+  ${(props) =>
     props.disabled &&
     `
       cursor: not-allowed !important;
@@ -110,7 +110,7 @@ const StyledButton = styled.button`
       }
     `}
 
-  ${props =>
+  ${(props) =>
     props.isUnclickable &&
     `
       cursor: default !important;
@@ -120,7 +120,7 @@ const StyledButton = styled.button`
       }
     `}
 
-  ${props =>
+  ${(props) =>
     props.isLoading &&
     `
       cursor: progress !important;
@@ -142,23 +142,24 @@ const StyledButton = styled.button`
       }
     `}
 
-  ${props =>
+  ${(props) =>
     props.containsIcon &&
     `
       svg {
         display: block;
         margin: 0;
       }
-      padding: ${props.size === SIZES.SMALL ? '7' : '12'}px;
+      padding: ${props.size === SIZES.SMALL ? "7" : "12"}px;
     `}
 
-  ${props =>
+  ${(props) =>
     props.appearance === APPEARANCES.PRIMARY &&
     `
       background: ${color.primary};
       color: ${color.lightest};
 
-      ${!props.isLoading &&
+      ${
+        !props.isLoading &&
         `
           &:hover {
             background: ${darken(0.05, color.primary)};
@@ -172,16 +173,18 @@ const StyledButton = styled.button`
           &:focus:hover {
             box-shadow: ${rgba(color.primary, 0.2)} 0 8px 18px 0px;
           }
-        `}
+        `
+      }
     `}
 
-  ${props =>
+  ${(props) =>
     props.appearance === APPEARANCES.SECONDARY &&
     `
       background: ${color.secondary};
       color: ${color.lightest};
 
-      ${!props.isLoading &&
+      ${
+        !props.isLoading &&
         `
           &:hover {
             background: ${darken(0.05, color.secondary)};
@@ -195,16 +198,18 @@ const StyledButton = styled.button`
           &:focus:hover {
             box-shadow: ${rgba(color.secondary, 0.2)} 0 8px 18px 0px;
           }
-        `}
+        `
+      }
     `}
 
-  ${props =>
+  ${(props) =>
     props.appearance === APPEARANCES.TERTIARY &&
     `
       background: ${color.tertiary};
       color: ${color.darkest};
 
-      ${!props.isLoading &&
+      ${
+        !props.isLoading &&
         `
           &:hover {
             background: ${darken(0.05, color.tertiary)};
@@ -218,17 +223,19 @@ const StyledButton = styled.button`
           &:focus:hover {
             box-shadow: ${rgba(color.tertiary, 0.2)} 0 8px 18px 0px;
           }
-        `}
+        `
+      }
     `}
 
-  ${props =>
+  ${(props) =>
     props.appearance === APPEARANCES.OUTLINE &&
     `
       box-shadow: ${color.medium} 0 0 0 1px inset;
       color: ${color.dark};
       background: transparent;
 
-      ${!props.isLoading &&
+      ${
+        !props.isLoading &&
         `
           &:hover {
             box-shadow: ${color.mediumdark} 0 0 0 1px inset;
@@ -251,12 +258,13 @@ const StyledButton = styled.button`
           0.2
         )} 0 8px 18px 0px;
           }
-        `};
+        `
+      };
     `};
 
-    ${props =>
-      props.appearance === APPEARANCES.PRIMARY_OUTLINE &&
-      `
+  ${(props) =>
+    props.appearance === APPEARANCES.PRIMARY_OUTLINE &&
+    `
         box-shadow: ${color.primary} 0 0 0 1px inset;
         color: ${color.primary};
 
@@ -271,16 +279,22 @@ const StyledButton = styled.button`
           color: ${color.lightest};
         }
         &:focus {
-          box-shadow: ${color.primary} 0 0 0 1px inset, ${rgba(color.primary, 0.4)} 0 1px 9px 2px;
+          box-shadow: ${color.primary} 0 0 0 1px inset, ${rgba(
+      color.primary,
+      0.4
+    )} 0 1px 9px 2px;
         }
         &:focus:hover {
-          box-shadow: ${color.primary} 0 0 0 1px inset, ${rgba(color.primary, 0.2)} 0 8px 18px 0px;
+          box-shadow: ${color.primary} 0 0 0 1px inset, ${rgba(
+      color.primary,
+      0.2
+    )} 0 8px 18px 0px;
         }
       `};
 
-    ${props =>
-      props.appearance === APPEARANCES.SECONDARY_OUTLINE &&
-      `
+  ${(props) =>
+    props.appearance === APPEARANCES.SECONDARY_OUTLINE &&
+    `
         box-shadow: ${color.secondary} 0 0 0 1px inset;
         color: ${color.secondary};
 
@@ -303,19 +317,20 @@ const StyledButton = styled.button`
             ${rgba(color.secondary, 0.2)} 0 8px 18px 0px;
         }
       `};
-
 `;
 
-const ButtonLink = StyledButton.withComponent('a');
+const ButtonLink = StyledButton.withComponent("a");
 
-const applyStyle = ButtonWrapper => {
+const applyStyle = (ButtonWrapper) => {
   return (
     ButtonWrapper &&
-    StyledButton.withComponent(({ containsIcon, isLoading, isUnclickable, ...rest }) => (
-      <ButtonWrapper {...rest} />
-    ))
+    StyledButton.withComponent(
+      ({ containsIcon, isLoading, isUnclickable, ...rest }) => (
+        <ButtonWrapper {...rest} />
+      )
+    )
   );
-};*/
+};
 
 export function Button({
   isDisabled,
