@@ -28,12 +28,12 @@ const SIZES = {
   SMALL: "small",
   MEDIUM: "medium",
 };
-/*
+
 const StyledButton = styled.button`
   border: 10px solid red;
   font-size: 20px;
-`;*/
-
+`;
+/*
 const StyledButton = styled.button`
   border-radius: 3em;
   cursor: pointer;
@@ -317,7 +317,7 @@ const StyledButton = styled.button`
             ${rgba(color.secondary, 0.2)} 0 8px 18px 0px;
         }
       `};
-`;
+`;*/
 
 const ButtonLink = StyledButton.withComponent("a");
 
